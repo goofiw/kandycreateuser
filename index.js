@@ -13,7 +13,7 @@ app.use(bodyParser({
   }
 }));
 
-app.use(views('src', {
+app.use(views('views', {
   default: 'html'
 }));
 
