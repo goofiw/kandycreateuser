@@ -2,15 +2,18 @@
 
 angular.module('notify', [
   'ui.router',
-  'ngAnimate',
-  'firebase',
-  'notify.common'
+  'ngFileUpload'
 ])
-  .constant('ENDPOINT_URI', 'https//notifyrocks.firbaseio.com/')
   .config(function ($stateProvider, $urlRouterProvider) {
-    urlRouterProvider.otherwise('/notify');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
+      .state('upload', {
+        url:'/',
+        templateUrl: 'app/file-upload/upload.html',
+        controller: 'UploadCtrl',
+        controllerAs: 'uploadCtrl'
+      })
       .state('login', {
         url:'/login',
         templateUrl: 'app/login/login.tmpl.html',
@@ -27,14 +30,14 @@ angular.module('notify', [
             return Auth.$requireAuth();
           }]
         }
-      })
-      .run(function ($rootScope, $state) {
-        $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState){
-          event.preventDefault();
-          if (error == 'AUTH_REQUIRED') {
-          $state.go('login');
-          }  
-        });
       });
-  });
+    })
+    .run(function ($rootScope, $state) {
+      $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, error){
+        event.preventDefault();
+        if (error == 'AUTH_REQUIRED') {
+        $state.go('login');
+        }  
+      });
+    });
 

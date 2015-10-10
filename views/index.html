@@ -4,21 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Notify</title>
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/notify.css">
+    <link rel="stylesheet" href="assets/stylesheets/css.css">
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="vendor/angular/angular.min.js"></script>
-    <script src="//cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
-    <script src="vendor/angularfire/dist/angularfire.js"></script>
     <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/ng-file-upload/ng-file-upload-all.min.js"></script>
 
     <script src="app/notify.js"></script>
 
+    <script src="app/file-upload/file-upload-controller.js"></script>
+    <script src="app/login/login-controller.js"></script>
+    <script src="app/notify/notify-controller.js"></script>
+
   </head>
   <body>
+    <span> will need to clean this up.  This is the api backend for the ionic app however will also have a way to upload a csv to the database</span>
     <a ui-sref="login">login</a>
+    <a ui-sref="notify">Notify</a>
     <div ui-view class="content"></div>
   </body>
 </html>
