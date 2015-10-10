@@ -9,6 +9,8 @@
   "author": "goofiw",
   "license": "Unlicense",
   "dependencies": {
+    "aws-sdk": "^2.2.9",
+    "dotenv": "^1.2.0",
     "koa": "^1.0.0",
     "koa-bodyparser": "^2.0.1",
     "koa-cors": "0.0.16",

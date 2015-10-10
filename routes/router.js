@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+var upload = require('../modules/upload.js');
+
 
 function route(app) {
   var router = require('koa-router')(app);
@@ -12,6 +14,10 @@ function route(app) {
 
   router.get('/api/members', function *(next){
     yield this.body = members;
+  })
+
+  router.get('/api/awsurl', function *(next){
+    yield this.body = {url: upload.getUrl()};
   })
 
   router.get('/', function *(next) {

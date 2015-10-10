@@ -6,6 +6,7 @@ var logger = require('koa-logger');
 var bodyParser = require('koa-bodyparser');
 var mongoose = require('mongoose');
 var cors = require('koa-cors');
+var dotenv = require('dotenv').load();
 
 var app = koa();
 
