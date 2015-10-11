@@ -16,6 +16,11 @@ function route(app) {
     yield this.body = members;
   })
 
+  router.post('/api/fileupload', function *(next) {
+    console.log(this);
+    yield this.body = {};
+  })
+
   router.get('/api/awsurl', function *(next){
     yield this.body = {url: upload.getUrl()};
   })

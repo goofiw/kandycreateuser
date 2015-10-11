@@ -2,7 +2,7 @@
 
 angular.module('notify', [
   'ui.router',
-  'ngFileUpload'
+  'ngResource'
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
