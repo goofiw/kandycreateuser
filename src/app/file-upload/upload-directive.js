@@ -1,36 +1,35 @@
 angular.module('notify')
-.directive('fileupload', function() {
+.directive('fileupload', ['MemberService', function(MemberService) {
   return {
     restrict: 'A',
     scope: {
-      done: '&',
-      progress: '&'
+      model: '='
     },
     link: function(scope, el, attrs) {
       var optionsObj = {
         dataType: 'json'
       };
 
-      if(scope.done) {
-        optionsObj.done = function(){
-          scope.$apply(function(){
-            scope.done({e: e, data: data});
-          });
-        };
-      }
+      el.change(handleFileSelect);
 
-      if (scope.progress) {
-        optionsObj.progress = function(e, data) {
-          scope.$apply(function() {
-            scope.progress({e: e, data: data});
-          });
-        }
-      }
 
-      el.fileupload(optionsObj);
+      function handleFileSelect(evt) {
+        var file = evt.target.files[0];
+     
+        Papa.parse(file, {
+          header: true,
+          dynamicTyping: true,
+          complete: function(results) {
+            console.log(results);
+            scope.model.members = results.data;
+            scope.$apply();;
+            data = results;
+          }
+        });
+      }
     },
   };
-});
+}]);
 
 
 //how to grab more obj out of directive

@@ -8,9 +8,10 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!-- for file uploads -->
-    <script src="http://rawgit.com/blueimp/jQuery-File-Upload/master/js/vendor/jquery.ui.widget.js"></script>
-    <script src="http://rawgit.com/blueimp/jQuery-File-Upload/master/js/jquery.iframe-transport.js"></script>
-    <script src="http://rawgit.com/blueimp/jQuery-File-Upload/master/js/jquery.fileupload.js"></script>
+    <script src="vendor/papaparse/papaparse.min.js"></script>
+<!--     // <script src="http://rawgit.com/blueimp/jQuery-File-Upload/master/js/vendor/jquery.ui.widget.js"></script>
+    // <script src="http://rawgit.com/blueimp/jQuery-File-Upload/master/js/jquery.iframe-transport.js"></script>
+    // <script src="http://rawgit.com/blueimp/jQuery-File-Upload/master/js/jquery.fileupload.js"></script> -->
 
 
 
@@ -26,11 +27,14 @@
     <script src="app/notify/notify-controller.js"></script>
     <script src="app/file-upload/upload-directive.js"></script>
 
+    <script src="app/common/members-service.js"></script>
+
   </head>
   <body>
-    <span> will need to clean this up.  This is the api backend for the ionic app however will also have a way to upload a csv to the database</span>
+    <span> will need to clean this up.  This is the api backend for the ionic app however will also have a way to upload a csv to the database {{members}}</span>
     <a ui-sref="login">login</a>
     <a ui-sref="notify">Notify</a>
+    <
     <div ui-view class="content"></div>
   </body>
 </html>
