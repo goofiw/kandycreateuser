@@ -1,5 +1,6 @@
 <div>
-  <input id='testUpload' type='file' fileupload name='files[]' model='$parent' > 
-  {{members}}
+  <input id='testUpload' type='file' fileupload done='addMembers' model='$parent' > 
+  <button ng-if='members' ui-sref='upload.show' ng-click='getAllMembers()'>Submit</button>
+  <div ui-view></div>
 </div>
 

@@ -14,6 +14,10 @@ angular.module('notify', [
         controller: 'UploadCtrl',
         controllerAs: 'uploadCtrl'
       })
+      .state('upload.show', {
+        url:'/showmembers',
+        templateUrl: 'app/file-upload/member-table.html'
+      })
       .state('login', {
         url:'/login',
         templateUrl: 'app/login/login.tmpl.html',

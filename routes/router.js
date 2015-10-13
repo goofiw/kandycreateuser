@@ -1,36 +1,26 @@
-var mongoose = require('mongoose');
+'use strict'
+var members = require('../controllers/members.js');
+var router = require('koa-router')();
 
-var upload = require('../modules/upload.js');
+  router.get('/api/members', members.auth, members.allmembers),
 
+  router.post('/api/addmembers', members.auth, members.addMembers),
 
-function route(app) {
-  var router = require('koa-router')(app);
-  var members = [
-        {name: 'will', email: 'goofiw@gmail.com', slack: 'will', company: 'StartupHall'},
-        {name: 'william', email: 'goofiwmailer@gmail.com', slack: 'william', company: 'StartupHall'},
-        {name: 'Rob', email: 'Rob@candyjar.com', slack: 'Rob', company: 'Candy Jar'},
-        {name: 'jeremy', email: 'jeremy@datablade.io', slack: 'jeremy', company: 'DataBlad'},
-        ]
-
-  router.get('/api/members', function *(next){
-    yield this.body = members;
-  })
+  router.post('/api/addmember', function *(next){
+    //accepts one member
+  }),
 
   router.post('/api/fileupload', function *(next) {
     console.log(this);
     yield this.body = {};
-  })
+  }),
 
   router.get('/api/awsurl', function *(next){
     yield this.body = {url: upload.getUrl()};
-  })
+  }),
 
   router.get('/', function *(next) {
     yield this.render('index'); 
-  })
+  }),
 
-
-  return router.routes();
-}
-
-module.exports = route;
+module.exports = router.routes();

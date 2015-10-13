@@ -1,9 +1,10 @@
 angular.module('notify')
-.directive('fileupload', ['MemberService', function(MemberService) {
+.directive('fileupload', [function() {
   return {
     restrict: 'A',
     scope: {
-      model: '='
+      model: '=',
+      done: '='
     },
     link: function(scope, el, attrs) {
       var optionsObj = {
@@ -22,6 +23,8 @@ angular.module('notify')
           complete: function(results) {
             console.log(results);
             scope.model.members = results.data;
+            console.log(scope);
+            scope.done(results.data);
             scope.$apply();;
             data = results;
           }
