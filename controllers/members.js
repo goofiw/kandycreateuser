@@ -17,7 +17,6 @@ co(function * () {
 // members.index('email', {unique:true});
 
 module.exports.allmembers = function *allmembers(next) {
-  console.log('do I get called');
   if ('GET' != this.method) return yield next;
   this.body = yield members.find({})
 }
@@ -42,19 +41,18 @@ module.exports.auth = function *auth(next) {
 module.exports.notify = function *notify(next) {
   if ('POST' != this.method) return yield next;
   var data = JSON.parse(this.body);
-  console.log(data, this.body)
-  console.log(this.params);
+  console.log('\n\n\ndata',data);
   var notifyMember = yield members.findOne({_id: data.id})
 
   var mailOptions = {
       from: notifyMember.name + ' <goofiwmailer@gmail.com>', // sender address 
-      to: notifyMember.name + ', ' + notifyMember.email, // list of receivers 
-      subject: data.visitorName + ' if waiting in the lobby', // Subject line 
+      to: notifyMember.name + ', ' + notifyMember.email + ', Associate <associate@startuphall.org>',// list of receivers 
+      subject: data.visitorName + ' is waiting in the lobby', // Subject line 
       text: 'This is an automated message from the StartUp Hall Front desk. \n' + data.visitorName + ' has arrived and is waiting in the lobby \n\n\n\n Thank you, \n\n StartUp Hall Robots', // plaintext body 
   };
   mailer(mailOptions);
   console.log(notifyMember);
-  this.body =  yield {blah: 'blah'};
+  this.body =  yield {member: notifyMember.name};
 }
 
 //helper functions
