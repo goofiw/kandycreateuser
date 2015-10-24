@@ -2,7 +2,7 @@
 var parse = require('co-body');
 var monk = require('monk');
 var wrap = require('co-monk');
-var db = monk('localhost/testNotify');
+var db = monk('localhost/speedDating');
 var co = require('co');
 
 var mailer = require('../modules/mailer.js');

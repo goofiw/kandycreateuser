@@ -1,16 +1,16 @@
 'use strict'
-var members = require('../controllers/members.js');
+var users = require('../controllers/users.js');
 var router = require('koa-router')();
 
-  router.get('/api/members', members.auth, members.allmembers);
+  router.get('/api/login', users.auth, users.allmembers);
 
-  router.post('/api/addmembers', members.auth, members.addMembers);
+  router.post('/api/addmembers', users.auth, users.addMembers);
 
   router.post('/api/addmember', function *(next){
     //accepts one member
   }),
 
-  router.post('/api/notify', members.notify);
+  router.post('/api/notify', users.notify);
 
 
   router.post('/api/fileupload', function *(next) {

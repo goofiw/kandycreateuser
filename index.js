@@ -4,16 +4,10 @@ var views = require('koa-views');
 var serve = require('koa-static');
 var logger = require('koa-logger');
 var koaBody = require('koa-body');
-var mongoose = require('mongoose');
 var cors = require('koa-cors');
 var dotenv = require('dotenv').load();
-var mongoose = require('mongoose');
 
 var app = koa();
-
-var db = mongoose.connection;
-mongoose.connect('mongodb://localhost/notifyTest');
-db.on('error', console.error.bind(console, 'connection error:'));
 
 app.use(koaBody({formidable:{uploadDir: __dirname}}));
 app.use(function *(next) {
