@@ -1,27 +1,20 @@
 'use strict'
-var users = require('../controllers/users.js');
+var auth = require('../controllers/auth.js');
+var rtc = require('../controllers/rtc.js');
 var router = require('koa-router')();
 
-  router.get('/api/login', users.auth, users.allmembers);
 
-  router.post('/api/addmembers', users.auth, users.addMembers);
+  router.post('/api/login', auth.login);
 
-  router.post('/api/addmember', function *(next){
-    //accepts one member
-  }),
+  router.post('/api/signup', auth.signup);
 
-  router.post('/api/notify', users.notify);
+  router.get('/api/logout', auth.logout);
 
+  router.get('/api/getprojecttoken', rtc.projectToken);
 
-  router.post('/api/fileupload', function *(next) {
-    console.log(this);
-    yield this.body = {};
-  }),
+  router.get('/api/createkandyuser', rtc.createKandyUser);
 
 
-  router.get('/api/awsurl', function *(next){
-    yield this.body = {url: upload.getUrl()};
-  }),
 
   router.get('/', function *(next) {
     yield this.render('index'); 
